@@ -54,4 +54,20 @@ public class RsaKeyUtils {
         PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
         return KeyFactory.getInstance("RSA").generatePrivate(spec);
     }
+
+    /**
+     * Convert PublicKey object to Base64 public key string
+     */
+    public String getPublicKey(KeyPair keyPair) {
+        byte[] publicKeyBytes = keyPair.getPublic().getEncoded();
+        return Base64.getEncoder().encodeToString(publicKeyBytes);
+    }
+
+    /**
+     * Convert PrivateKey object to Base64 private key string
+     */
+    public String getPrivateKey(KeyPair keyPair) {
+        byte[] privateKeyBytes = keyPair.getPrivate().getEncoded();
+        return Base64.getEncoder().encodeToString(privateKeyBytes);
+    }
 }
